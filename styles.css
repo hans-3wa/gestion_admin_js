@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+    background-color: #fefefe;
+}
+
+nav{
+    background-color: #5ea671;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav>div{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+nav>div>button{
+    border-radius: 5px;
+    background-color: #fefefe;
+    padding: 8px;
+    border: 1px solid black;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    min-width: 150px;
+}
+
+nav>div>button:hover{
+    transition: 0.5s ;
+    transform: scale(1.1);
+    color: #5ea671;
+    
+}
+nav>div>select {
+    border-radius: 5px;
+    background-color: #fefefe;
+    padding: 8px;
+    border: 1px solid black;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    min-width: 150px;
+}
+
+nav>div>select:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+    color: #5ea671;
+}
+.container{
+    padding: 0 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card{
+    min-width: 30%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card > h2 {
+    text-align: center;
+}
+
+.card > .action {
+    display: flex;
+    justify-content: space-between;
+}
+.card > .action > button {
+    border-radius: 5px;
+    background-color: #fefefe;
+    padding: 8px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.card > .action > button:hover {
+    transition: 0.5s;
+    color: white;
+    
+}
+.card > .action > button:nth-child(1):hover {
+    background-color: #ffd51a;
+}
+.card > .action > button:nth-child(2):hover {
+    background-color: #ff5656;
+}
+.card > .action > button:nth-child(3):hover {
+    background-color: #5da75d;
+}
