@@ -619,7 +619,7 @@ function formUpdateProduct() {
                         childrens: [
                             {
                                 tag: "textarea",
-                                text: "",
+                                text: product.description,
                                 attributes: [
                                     {
                                         name: "type",
@@ -632,10 +632,6 @@ function formUpdateProduct() {
                                     {
                                         name: "name",
                                         value: "description"
-                                    },
-                                    {
-                                        name: "placeholder",
-                                        value: product.description
                                     }
                                 ],
                                 childrens: []
@@ -685,25 +681,24 @@ function formUpdateProduct() {
             document.getElementById(id).innerHTML = ""
             const formElement = createElementNode(form)
             document.getElementById(id).appendChild(formElement)
-            updateProduct(formElement, id)
+            updateProduct(formElement, product)
         })
     })
 }
 
-function updateProduct(form, id){
+function updateProduct(form, product){
 
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-        const product = products.find(product => product.id === id)
-        for(let i = 0; i < e.target.elements.length; i++){
-            const element = e.target.elements[i];
-            console.log(element.name, element.value)
-            console.log(product[element.name])
-            product[element.name] = element.value
+        if(e.submitter.textContent !== 'Cancel'){
 
+            for(let i = 0; i < e.target.elements.length; i++){
+                const element = e.target.elements[i];
+                product[element.name] = element.value
+
+            }
         }
-        console.log(product)
-         main(displayProduct())
+        main(displayProduct())
     })
 }
 
