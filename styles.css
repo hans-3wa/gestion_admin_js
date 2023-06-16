@@ -57,6 +57,7 @@ nav>div>select:hover {
 
 .card{
     min-width: 30%;
+    max-width: 30%;
     border: 1px solid black;
     border-radius: 5px;
     padding: 4px;
@@ -68,28 +69,62 @@ nav>div>select:hover {
     text-align: center;
 }
 
-.card > .action {
+.action {
     display: flex;
     justify-content: space-between;
 }
-.card > .action > button {
+.action > button {
     border-radius: 5px;
     background-color: #fefefe;
     padding: 8px;
     border: 1px solid black;
     cursor: pointer;
 }
-.card > .action > button:hover {
+.action > button:hover {
     transition: 0.5s;
     color: white;
-    
+
 }
-.card > .action > button:nth-child(1):hover {
+.action > input {
+    border-radius: 5px;
+    background-color: #fefefe;
+    padding: 8px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.action > input:hover {
+    transition: 0.5s;
+    color: white;
+
+}
+.action > button:nth-child(1):hover {
     background-color: #ffd51a;
 }
-.card > .action > button:nth-child(2):hover {
+.action > input:nth-child(1):hover {
+    background-color: #ffd51a;
+}
+.action > button:nth-child(2):hover {
     background-color: #ff5656;
 }
-.card > .action > button:nth-child(3):hover {
+.action > button:nth-child(3):hover {
     background-color: #5da75d;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+}
+
+form>label{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 4px;
+}
+
+form>label>input{
+    margin-top: 4px;
+}
+
+form>label>textarea{
+    margin-top: 4px;
 }

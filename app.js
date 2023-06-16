@@ -229,14 +229,14 @@ function filter() {
     const select = document.querySelector('nav>div>select')
 
     select.addEventListener('change', (e) => {
-        const selectedValue = event.target.value;
+        const selectedValue = e.target.value;
         if (selectedValue === 'Price +') {
             products.sort((a, b) => b.price - a.price)
         } else if (selectedValue === 'Price -') {
             products.sort((a, b) => a.price - b.price)
         }
 
-        main(products)
+        main(displayProduct())
     })
 }
 
@@ -309,7 +309,16 @@ function createCard(products) {
                         {
                             tag: "button",
                             text: "Modifier",
-                            attributes: [],
+                            attributes: [
+                                {
+                                    name: "class",
+                                    value: "update"
+                                },
+                                {
+                                    name: "data-update-product",
+                                    value: product.id
+                                }
+                            ],
                             childrens: []
                         },
                         {
@@ -412,6 +421,292 @@ function displayProduct() {
 
 }
 
+function formUpdateProduct() {
+    const buttons = document.querySelectorAll('.update')
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = parseInt(btn.getAttribute('data-update-product'))
+          const product = products.find(product => product.id === id)
+            const form = {
+                tag: "form",
+                text: "",
+                attributes: [],
+                childrens: [
+                    {
+                        tag: "label",
+                        text: "Nom du produit:",
+                        attributes: [
+                            {
+                                name: "for",
+                                value: "name"
+                            }
+                        ],
+                        childrens: [
+                            {
+                                tag: "input",
+                                text: "",
+                                attributes: [
+                                    {
+                                        name: "type",
+                                        value: "text"
+                                    },
+                                    {
+                                        name: "id",
+                                        value: "name"
+                                    },
+                                    {
+                                        name: "name",
+                                        value: "name"
+                                    },
+                                    {
+                                        name: "value",
+                                        value: product.name
+                                    }
+                                ],
+                                childrens: []
+                            }
+                        ]
+                    },
+                    {
+                        tag: "label",
+                        text: "Type:",
+                        attributes: [
+                            {
+                                name: "for",
+                                value: "type"
+                            }
+                        ],
+                        childrens: [
+                            {
+                                tag: "input",
+                                text: "",
+                                attributes: [
+                                    {
+                                        name: "type",
+                                        value: "text"
+                                    },
+                                    {
+                                        name: "id",
+                                        value: "type"
+                                    },
+                                    {
+                                        name: "name",
+                                        value: "type"
+                                    },
+                                    {
+                                        name: "value",
+                                        value: product.type
+                                    }
+                                ],
+                                childrens: []
+                            }
+                        ]
+                    },
+                    {
+                        tag: "label",
+                        text: "Stock:",
+                        attributes: [
+                            {
+                                name: "for",
+                                value: "quantity"
+                            }
+                        ],
+                        childrens: [
+                            {
+                                tag: "input",
+                                text: "",
+                                attributes: [
+                                    {
+                                        name: "type",
+                                        value: "number"
+                                    },
+                                    {
+                                        name: "id",
+                                        value: "quantity"
+                                    },
+                                    {
+                                        name: "name",
+                                        value: "quantity"
+                                    },
+                                    {
+                                        name: "value",
+                                        value: product.quantity
+                                    }
+                                ],
+                                childrens: []
+                            }
+                        ]
+                    },
+                    {
+                        tag: "label",
+                        text: "Price:",
+                        attributes: [
+                            {
+                                name: "for",
+                                value: "price"
+                            }
+                        ],
+                        childrens: [
+                            {
+                                tag: "input",
+                                text: "",
+                                attributes: [
+                                    {
+                                        name: "type",
+                                        value: "number"
+                                    },
+                                    {
+                                        name: "id",
+                                        value: "price"
+                                    },
+                                    {
+                                        name: "name",
+                                        value: "price"
+                                    },
+                                    {
+                                        name: "value",
+                                        value: product.price
+                                    }
+                                ],
+                                childrens: []
+                            }
+                        ]
+                    },
+                    {
+                        tag: "label",
+                        text: "TVA:",
+                        attributes: [
+                            {
+                                name: "for",
+                                value: "tva"
+                            }
+                        ],
+                        childrens: [
+                            {
+                                tag: "input",
+                                text: "",
+                                attributes: [
+                                    {
+                                        name: "type",
+                                        value: "number"
+                                    },
+                                    {
+                                        name: "id",
+                                        value: "tva"
+                                    },
+                                    {
+                                        name: "name",
+                                        value: "tva"
+                                    },
+                                    {
+                                        name: "value",
+                                        value: product.tva
+                                    }
+                                ],
+                                childrens: []
+                            }
+                        ]
+                    },
+                    {
+                        tag: "label",
+                        text: "Description:",
+                        attributes: [
+                            {
+                                name: "for",
+                                value: "description"
+                            }
+                        ],
+                        childrens: [
+                            {
+                                tag: "textarea",
+                                text: "",
+                                attributes: [
+                                    {
+                                        name: "type",
+                                        value: "text"
+                                    },
+                                    {
+                                        name: "id",
+                                        value: "description"
+                                    },
+                                    {
+                                        name: "name",
+                                        value: "description"
+                                    },
+                                    {
+                                        name: "placeholder",
+                                        value: product.description
+                                    }
+                                ],
+                                childrens: []
+                            }
+                        ]
+                    },
+                    {
+                        tag: "div",
+                        text: "",
+                        attributes: [
+                            {
+                                name: "class",
+                                value: "action"
+                            }
+                        ],
+                        childrens:[
+                            {
+                                tag: "input",
+                                text: "",
+                                attributes: [
+                                    {
+                                        name: "type",
+                                        value: "submit"
+                                    },
+                                    {
+                                        name: "value",
+                                        value: "Modifier"
+                                    }
+                                ],
+                                childrens: []
+                            },
+                            {
+                                tag: "button",
+                                text: "Cancel",
+                                attributes: [
+                                    {
+                                        name: "class",
+                                        value: "cancel"
+                                    }
+                                ],
+                                childrens: []
+                            },
+                        ]
+                    }
+                ]
+            };
+            document.getElementById(id).innerHTML = ""
+            const formElement = createElementNode(form)
+            document.getElementById(id).appendChild(formElement)
+            updateProduct(formElement, id)
+        })
+    })
+}
+
+function updateProduct(form, id){
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const product = products.find(product => product.id === id)
+        for(let i = 0; i < e.target.elements.length; i++){
+            const element = e.target.elements[i];
+            console.log(element.name, element.value)
+            console.log(product[element.name])
+            product[element.name] = element.value
+
+        }
+        console.log(product)
+         main(displayProduct())
+    })
+}
+
 function main(products) {
     body.innerHTML = ''
     createNavbar(body)
@@ -419,6 +714,7 @@ function main(products) {
     createCard(products)
     updatVisible()
     removeElement()
+    formUpdateProduct()
 }
 
 
